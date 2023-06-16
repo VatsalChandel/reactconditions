@@ -7,7 +7,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+:root {
+  --background-image: url('/porsche.jpeg');
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 100px; 
+  background-color: beige;
+
+  background-image: var(--background-image); 
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
