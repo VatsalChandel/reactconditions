@@ -7,8 +7,10 @@ class App extends React.Component {
     this.state = {
       place: 'Seattle', 
       submittedPlace: 'Seattle', 
+      code: 0,
     };
   }
+
 
   handleChange = event => {
     this.setState({ place: event.target.value });
@@ -19,14 +21,21 @@ class App extends React.Component {
     this.setState({ submittedPlace: this.state.place });
   };
 
+  handleConditionText = conditionText => {
+    this.setState({ conditionText });
+    console.log(conditionText);
+  };
+
+
   render() {
-    const { place, submittedPlace } = this.state;
+    const { place, submittedPlace, code } = this.state;
+
 
     return (
+
       <div>
 
-        <PostList place={submittedPlace} />
-
+        <PostList place={submittedPlace} onConditionTextChange={this.handleConditionText} />
         <form onSubmit={this.handleSubmit}>
           <input type="text" value={place} onChange={this.handleChange} />
           <button type="submit">Submit</button>
@@ -36,5 +45,7 @@ class App extends React.Component {
     );
   }
 }
+
+
 
 export default App;

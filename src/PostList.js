@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './index.css';
 
 class PostList extends Component {
   constructor(props) {
@@ -34,7 +33,7 @@ class PostList extends Component {
           conditionText: response.data?.current?.condition?.text,
           conditionCode: response.data?.current?.condition?.code,
         });
-        console.log(response.data);
+        this.props.onConditionTextChange(response.data?.current?.condition?.text); // Call the callback function with conditionText
       })
       .catch(error => {
         console.error('Error:', error);
@@ -52,13 +51,13 @@ class PostList extends Component {
     var fog = [1135, 1147];
 
     if (sunny.indexOf(conditionCode) !== -1) {
-      return 'sunnyImage.jpeg'; 
+      return '/sunnyImage.jpeg'; 
     } else if (cloudy.indexOf(conditionCode) !== -1) {
       return './cloudyImage.jpeg';
     } else if (overcast.indexOf(conditionCode) !== -1) {
       return './sunnyImage.jpeg';
     } else if (rain.indexOf(conditionCode) !== -1) {
-      return './rainyImage.jpeg';
+      return 'sunnyImage';
     } else if (snow.indexOf(conditionCode) !== -1) {
       return './snowImage.jpeg';
     } else if (ice.indexOf(conditionCode) !== -1) {
